@@ -9,13 +9,16 @@ export const createProduct = async (event: APIGatewayProxyEvent): Promise<APIGat
   const reqBody = JSON.parse(event.body as string);
 
   const product = { ...reqBody, productID: v4 };
-  await docClient
-    .put({
-      TableName: tableName,
-      Item: product,
-    })
-    .promise();
-
+  try {
+    await docClient
+      .put({
+        TableName: tableName,
+        Item: product,
+      })
+      .promise();
+  } catch (error) {
+    console.log(error);
+  }
   return {
     statusCode: 201,
     body: JSON.stringify(product),
