@@ -8,7 +8,7 @@ const tableName = "ProductTable";
 export const createProduct = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   const reqBody = JSON.parse(event.body as string);
 
-  const product = { ...reqBody, productID: v4 };
+  const product = { ...reqBody, productID: v4() };
   try {
     await docClient
       .put({
