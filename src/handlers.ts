@@ -3,7 +3,7 @@ import AWS from "aws-sdk";
 import { v4 } from "uuid";
 
 const docClient = new AWS.DynamoDB.DocumentClient();
-const tableName = "ProductTable";
+const tableName = "ProductsTable";
 
 export const createProduct = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   const reqBody = JSON.parse(event.body as string);
