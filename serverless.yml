@@ -29,11 +29,10 @@ provider:
   #  stage: dev
   # region: us-east-1
 
-# you can add statements to the Lambda function's IAM Role here
 iam:
   role:
     statements:
-      - Effect: "Allow"
+      - Effect: Allow
         Action:
           - "dynamodb:PutItem"
           - "dynamodb:GetItem"
